@@ -13,7 +13,7 @@ const SignUp = () => {
   const { createUser, providerLogin, updateUser, loading, setLoading } =
     useContext(MyContext);
 
-  const [value, setValue] = useState("user");
+  // const [value, setValue] = useState("user");
   const googleProvider = new GoogleAuthProvider();
   // function for handling google button
 
@@ -57,6 +57,8 @@ const SignUp = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
+        console.log(user);
+
         toast.success("User Created Successfully.");
         // reset();
 
@@ -156,7 +158,7 @@ const SignUp = () => {
                       type="radio"
                       name="inlineRadioOptions"
                       id="user"
-                      value={value}
+                      value="user"
                       {...register("role")}
                       checked
                     />
