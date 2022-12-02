@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import { MyContext } from "../../context/AuthProvider/AuthProvider";
+import Navbar from "../Shared/Navbar/Navbar";
 
 const SignUp = () => {
   const location = useLocation();
@@ -49,11 +50,11 @@ const SignUp = () => {
     handleSubmit,
     reset,
   } = useForm();
-  if (loading) {
-    return <Loader></Loader>;
-  }
 
   const handleSignUp = (data) => {
+    if (loading) {
+      return <Loader></Loader>;
+    }
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
@@ -81,8 +82,9 @@ const SignUp = () => {
             })
               .then((res) => res.json())
               .then((data) => {
-                setLoading(false);
+                reset();
                 navigate(from, { replace: true });
+                setLoading(false);
               });
           })
           .catch((err) => console.log(err));
@@ -92,6 +94,7 @@ const SignUp = () => {
 
   return (
     <div>
+      <Navbar></Navbar>
       <section className="h-screen">
         <div className="container px-6 py-12 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">

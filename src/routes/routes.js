@@ -39,14 +39,7 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://server-resale.vercel.app/allbikes/${params.id}`),
       },
-      {
-        path: "/login",
-        element: <Login></Login>,
-      },
-      {
-        path: "/signup",
-        element: <SignUp></SignUp>,
-      },
+
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
@@ -108,5 +101,13 @@ export const router = createBrowserRouter([
         element: <ReportedItems></ReportedItems>,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/signup",
+    element: <SignUp></SignUp>,
   },
 ]);

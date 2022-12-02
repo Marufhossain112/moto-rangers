@@ -8,6 +8,7 @@ import {
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import Navbar from "../Shared/Navbar/Navbar";
 
 const Login = ({ googleSignIn }) => {
   const location = useLocation();
@@ -69,6 +70,7 @@ const Login = ({ googleSignIn }) => {
   }
   return (
     <div>
+      <Navbar></Navbar>
       <section className="h-screen">
         <div className="container px-6 py-12 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
