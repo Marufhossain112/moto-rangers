@@ -29,7 +29,7 @@ const SignUp = () => {
           role: "buyer",
         };
         if (user) {
-          fetch("https://server-resale.vercel.app/users", {
+          fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -73,7 +73,7 @@ const SignUp = () => {
               email: data.email,
               role: data.role,
             };
-            fetch("https://server-resale.vercel.app/users", {
+            fetch("http://localhost:5000/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

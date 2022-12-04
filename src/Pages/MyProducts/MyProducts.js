@@ -9,9 +9,7 @@ const MyProducts = () => {
   const { data: addproductsData = [], refetch } = useQuery({
     queryKey: ["addproduct", data],
     queryFn: async () => {
-      const res = await fetch(
-        "https://server-resale.vercel.app/dashboard/addproduct"
-      );
+      const res = await fetch("http://localhost:5000/dashboard/addproduct");
       const data = await res.json();
       return data;
     },
@@ -20,12 +18,12 @@ const MyProducts = () => {
 
   const advertiseProduct = (id) => {
     // console.log("i am advertising", id);
-    fetch(`https://server-resale.vercel.app/advertiseproduct/${id}`)
+    fetch(`http://localhost:5000/advertiseproduct/${id}`)
       .then((res) => res.json())
       .then((data) => {
         toast.success("Product advertise successful.");
         console.log(data);
-        fetch("https://server-resale.vercel.app/advertiseproduct", {
+        fetch("http://localhost:5000/advertiseproduct", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -39,7 +37,7 @@ const MyProducts = () => {
 
   const handleDelete = (id) => {
     // console.log("I am deleting ", id);
-    fetch(`https://server-resale.vercel.app/dashboard/addproduct/${id}`, {
+    fetch(`http://localhost:5000/dashboard/addproduct/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -53,50 +51,50 @@ const MyProducts = () => {
   };
 
   return (
-    <div class="flex flex-col">
-      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-          <div class="overflow-hidden">
+    <div className="flex flex-col">
+      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div className="overflow-hidden">
             {addproductsData.length < 1 ? (
               <div className="flex justify-center mr-40 mt-10 text-3xl">
                 My Products
               </div>
             ) : (
-              <table class="min-w-full">
-                <thead class="bg-white border-b">
+              <table className="min-w-full">
+                <thead className="bg-white border-b">
                   <tr>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     ></th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Product Name
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Price
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Condition
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Status
                     </th>
 
                     <th
                       scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Delete
                     </th>
@@ -104,30 +102,30 @@ const MyProducts = () => {
                 </thead>
                 <tbody>
                   {addproductsData.map((product, i) => (
-                    <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {i + 1}
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {product.name}
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {product.price}
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {product.condition}
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         available
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {/* <FaBeer></FaBeer> */}
                         <AiOutlineDelete
                           onClick={() => handleDelete(product._id)}
                           className="ml-3"
                         ></AiOutlineDelete>
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <button
                           onClick={() => advertiseProduct(product._id)}
                           className="btn btn-sm"

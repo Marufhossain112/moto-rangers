@@ -18,7 +18,7 @@ const OrderCard = ({ order }) => {
   } = order;
   const handleReportedItems = (order) => {
     // console.log("I am clikcing", order);
-    fetch("https://server-resale.vercel.app/dashboard/reporteditems", {
+    fetch("http://localhost:5000/dashboard/reporteditems", {
       method: "POST",
       headers: {
         "content-type": "application/json",
