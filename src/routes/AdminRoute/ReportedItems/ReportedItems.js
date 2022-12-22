@@ -6,7 +6,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 const ReportedItems = () => {
   const handleDeleteReport = (id) => {
     // console.log("I am deleting ", id);
-    fetch(`http://localhost:5000/dashboard/reportedItems/${id}`, {
+    fetch(`https://server-resale.vercel.app/dashboard/reportedItems/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -14,7 +14,7 @@ const ReportedItems = () => {
         if (data.deletedCount) {
           toast.success("Reported item deleted  successfully");
           refetch();
-          console.log(data);
+          // console.log(data);
         }
       });
   };
@@ -22,7 +22,9 @@ const ReportedItems = () => {
   const { data: reportedItemsData = [], refetch } = useQuery({
     queryKey: ["reportedItems"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/dashboard/reportedItems");
+      const res = await fetch(
+        "https://server-resale.vercel.app/dashboard/reportedItems"
+      );
       const data = await res.json();
       return data;
     },

@@ -1,12 +1,8 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import {
-  AuthContext,
-  MyContext,
-} from "../../context/AuthProvider/AuthProvider";
-import { FaGoogle } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { MyContext } from "../../context/AuthProvider/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import Navbar from "../Shared/Navbar/Navbar";
 
@@ -15,7 +11,7 @@ const Login = ({ googleSignIn }) => {
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
   const googleProvider = new GoogleAuthProvider();
-  const { signIn, providerLogin, updateUser, loading } = useContext(MyContext);
+  const { signIn, providerLogin, loading } = useContext(MyContext);
   const {
     register,
     formState: { errors },
@@ -34,7 +30,7 @@ const Login = ({ googleSignIn }) => {
           role: "buyer",
         };
         if (user) {
-          fetch("http://localhost:5000/users", {
+          fetch("https://server-resale.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -50,7 +46,7 @@ const Login = ({ googleSignIn }) => {
         }
       })
       .catch((error) => console.log(error));
-    console.log(" I  am clicked");
+    // console.log(" I  am clicked");
   };
 
   const handleLogin = (data) => {
@@ -58,11 +54,11 @@ const Login = ({ googleSignIn }) => {
       .then((result) => {
         const user = result.user;
         navigate(from, { replace: true });
-        console.log(user);
+        // console.log(user);
         reset();
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
   if (loading) {

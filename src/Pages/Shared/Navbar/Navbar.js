@@ -1,8 +1,23 @@
 import React, { useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const [isScroll, setIsScroll] = useState(false);
+  const checkScroll = () => {
+    // console.log(window.scrollY);
+    if (window.scrollY >= 65) {
+      setIsScroll(true);
+      // console.log(isScroll);
+    } else {
+      setIsScroll(false);
+      // console.log(isScroll);
+    }
+    console.log(isScroll);
+  };
+
+  window.addEventListener("scroll", checkScroll);
   const { user, logOut } = useContext(MyContext);
   const handleLogout = () => {
     logOut()
@@ -25,7 +40,11 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div
+        className={`navbar bg-black  ${
+          isScroll ? "fixed top-0" : "relative"
+        }`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

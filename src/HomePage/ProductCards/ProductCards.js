@@ -3,14 +3,14 @@ import ProductModal from "../ProductModal/ProductModal";
 import { MdOutlineReportGmailerrorred } from "react-icons/md";
 import toast from "react-hot-toast";
 import { MyContext } from "../../context/AuthProvider/AuthProvider";
-const ProductCards = ({ bike }) => {
+const ProductCards = ({ bike, brandsId }) => {
   const { user } = useContext(MyContext);
-  console.log(bike);
+  // console.log(bike);
   const { name, location, resalePrice, originalPrice, used, posted, pic, id } =
     bike;
   const handleReportedItems = (bike) => {
     // console.log("I am clikcing", bike);
-    fetch("http://localhost:5000/dashboard/reporteditems", {
+    fetch("https://server-resale.vercel.app/dashboard/reporteditems", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -20,7 +20,7 @@ const ProductCards = ({ bike }) => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("Report successful for this product.");
-        console.log(data);
+        // console.log(data);
       });
   };
 
@@ -67,7 +67,11 @@ const ProductCards = ({ bike }) => {
           </label>
         </div>
       </div>
-      <ProductModal key={id} bikeDetails={bike}></ProductModal>
+      <ProductModal
+        key={id}
+        brandsId={brandsId}
+        bikeDetails={bike}
+      ></ProductModal>
     </div>
   );
 };

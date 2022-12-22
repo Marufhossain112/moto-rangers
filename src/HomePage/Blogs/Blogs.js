@@ -3,7 +3,7 @@ import React from "react";
 const Blogs = () => {
   return (
     <div className="text-center">
-      <h2 className="text-3xl font-semibold mb-5">
+      <h2 className="text-3xl font-semibold my-5">
         Some important question and answer
       </h2>
       <div

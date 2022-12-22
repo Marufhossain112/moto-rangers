@@ -1,3 +1,10 @@
+.home-banner h1 {
+  color: deeppink;
+}
+.home-banner p {
+  color: greenyellow;
+}
+
 @media (400px <= width <= 575px) {
   .home-banner {
     height: 28vh;

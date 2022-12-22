@@ -7,7 +7,7 @@ const ProductCategories = () => {
   const [bikesData, setBikesData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allbikes")
+      .get("https://server-resale.vercel.app/allbikes")
       .then((res) => res.data)
       .then((data) => setBikesData(data));
   }, []);

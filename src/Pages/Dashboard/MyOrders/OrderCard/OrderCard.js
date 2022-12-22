@@ -3,7 +3,7 @@ import { MdOutlineReportGmailerrorred } from "react-icons/md";
 import toast from "react-hot-toast";
 import { MyContext } from "../../../../context/AuthProvider/AuthProvider";
 const OrderCard = ({ order }) => {
-  console.log(order);
+  // console.log(order);
   const { user } = useContext(MyContext);
   const {
     name,
@@ -18,7 +18,7 @@ const OrderCard = ({ order }) => {
   } = order;
   const handleReportedItems = (order) => {
     // console.log("I am clikcing", order);
-    fetch("http://localhost:5000/dashboard/reporteditems", {
+    fetch("https://server-resale.vercel.app/dashboard/reporteditems", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,7 +28,7 @@ const OrderCard = ({ order }) => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("Report successful for this product.");
-        console.log(data);
+        // console.log(data);
       });
   };
 

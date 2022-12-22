@@ -7,14 +7,16 @@ const AllBuyers = () => {
   const { data: allbuyersData = [], refetch } = useQuery({
     queryKey: ["allbuyers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/dashboard/allbuyers");
+      const res = await fetch(
+        "https://server-resale.vercel.app/dashboard/allbuyers"
+      );
       const data = await res.json();
       return data;
     },
   });
   const handleDelete = (id) => {
     // console.log("I am deleting ", id);
-    fetch(`http://localhost:5000/dashboard/allbuyers/${id}`, {
+    fetch(`https://server-resale.vercel.app/dashboard/allbuyers/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -22,7 +24,7 @@ const AllBuyers = () => {
         if (data.deletedCount) {
           toast.success("Product deleted successfully");
           refetch();
-          console.log(data);
+          // console.log(data);
         }
       });
   };

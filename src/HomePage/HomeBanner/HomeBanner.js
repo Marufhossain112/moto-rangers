@@ -4,7 +4,7 @@ import "./HomeBanner.css";
 const HomeBanner = () => {
   return (
     <div
-      className="mt-5 home-banner"
+      className="home-banner"
       style={{
         background: ` url(
           https://i.ibb.co/mNQfQLM/Most-Expensive-Motorbikes-Kawasaki-Ninja-H2-R-800x450.jpg
@@ -13,7 +13,7 @@ const HomeBanner = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         // height: "100vh",
-        opacity: 0.7,
+        // opacity: 0.7,
       }}
     >
       <div className="flex justify-center items-center h-[100%]">

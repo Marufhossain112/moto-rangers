@@ -6,13 +6,13 @@ const AdvertiseProduct = () => {
   const { data: advertiseData = [], refetch } = useQuery({
     queryKey: ["advertiseproduct"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertiseproduct");
+      const res = await fetch("https://server-resale.vercel.app/advertiseproduct");
       const data = await res.json();
       return data;
     },
   });
   refetch();
-  console.log(advertiseData);
+  // console.log(advertiseData);
   return (
     <>
       {advertiseData.length > 0 && (

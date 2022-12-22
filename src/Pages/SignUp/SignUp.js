@@ -22,14 +22,14 @@ const SignUp = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         const users = {
           name: user.displayName,
           email: user.email,
           role: "buyer",
         };
         if (user) {
-          fetch("http://localhost:5000/users", {
+          fetch("https://server-resale.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -42,7 +42,7 @@ const SignUp = () => {
         }
       })
       .catch((error) => console.log(error));
-    console.log(" I  am clicked");
+    // console.log(" I  am clicked");
   };
   const {
     register,
@@ -58,7 +58,7 @@ const SignUp = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
 
         toast.success("User Created Successfully.");
         // reset();
@@ -73,7 +73,7 @@ const SignUp = () => {
               email: data.email,
               role: data.role,
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://server-resale.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

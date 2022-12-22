@@ -6,12 +6,14 @@ const MyOrders = () => {
   const { data: myOrdersData = [] } = useQuery({
     queryKey: ["addproduct"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/dashboard/addproduct");
+      const res = await fetch(
+        "https://server-resale.vercel.app/dashboard/addproduct"
+      );
       const data = await res.json();
       return data;
     },
   });
-  console.log(myOrdersData);
+  // console.log(myOrdersData);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-xl md:max-w-4xl lg:max-w-7xl mx-auto">
